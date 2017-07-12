@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <form action="fileupload.json" method="post" enctype="multipart/form-data">
     <input type="file" name="demofile"/>
+    <input type="file" name="demofile2"/>
     <input type="submit"/>
     </form>
   </body>
