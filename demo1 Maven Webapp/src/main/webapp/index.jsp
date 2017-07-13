@@ -25,7 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="file" name="demofile"/>
     <input type="file" name="demofile2"/>
      <input type="file" name="demofile3"/>
+
           <input type="file" name="demofile5"/>
+
+    <input type="file" name="demofile4"/>
     <input type="submit"/>
     </form>
   </body>
