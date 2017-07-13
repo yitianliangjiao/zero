@@ -3,5 +3,9 @@
    
 /.settings/
 /.classpath
+<<<<<<< HEAD
+=======
+/bin/
+>>>>>>> branch 'master' of https://github.com/yitianliangjiao/zero.git
 /.gitignore
 /.project
