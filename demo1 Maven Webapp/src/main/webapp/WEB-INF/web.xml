@@ -11,7 +11,27 @@
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
      </listener>
-  
+  <filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter id="Filter_1463446316823">
+		<filter-name>manage</filter-name>
+		<filter-class>com.wrh.demo.filter.ManageFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>manage</filter-name>
+		<url-pattern>/*</url-pattern>
+	
+	</filter-mapping>
     <servlet id="Servlet_1498726053764">
         <servlet-name>SpringMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
