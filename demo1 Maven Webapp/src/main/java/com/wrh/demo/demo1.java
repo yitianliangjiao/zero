@@ -23,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.alibaba.fastjson.JSONObject;
+
 
 /**
  * @ClassName: demo1
@@ -36,18 +38,19 @@ public class demo1 {
 @RequestMapping("/hello")
 public String test() {
 
-    return "index";
+    return "jsps/plupload";
 }
 @ResponseBody
 @RequestMapping("/fileupload.json")
-public String upload(HttpServletRequest request) throws IOException {
-	String check = "true";
+public JSONObject upload(HttpServletRequest request) throws IOException {
+	JSONObject obj = new JSONObject();
 	CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 			request.getSession().getServletContext());
 	MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-	MultipartFile file = multiRequest.getFile("demofile");
+	MultipartFile file = multiRequest.getFile("file");
 	InputStream in = file.getInputStream();
-	FileUtils.copyInputStreamToFile(in, new File("C:/Users/Administrator/Desktop", "lal.txt"));
-    return check;
+	FileUtils.copyInputStreamToFile(in, new File("C:/Users/Administrator/Desktop", "lal.img"));
+	obj.put("0", "上传成功");
+    return obj;
 }
 }
