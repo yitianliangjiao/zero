@@ -24,6 +24,18 @@
     <artifactId>spring-context</artifactId>
     <version>4.2.4.RELEASE</version>
 </dependency>
+<!--为了返回json -->
+<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+
 <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -34,6 +46,7 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
 		</dependency>
+<!-- 实现一些JSON类-->
 <dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 
@@ -49,7 +50,7 @@ public JSONObject upload(HttpServletRequest request) throws IOException {
 	MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 	MultipartFile file = multiRequest.getFile("file");
 	InputStream in = file.getInputStream();
-	FileUtils.copyInputStreamToFile(in, new File("C:/Users/Administrator/Desktop", "lal.img"));
+	FileUtils.copyInputStreamToFile(in, new File("E://", "lal.jpg"));
 	obj.put("0", "上传成功");
     return obj;
 }
