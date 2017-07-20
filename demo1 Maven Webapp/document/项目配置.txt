@@ -1,7 +1,10 @@
-http://blog.csdn.net/new_sara/article/details/51604997;
-http://www.sxrczx.com/pages/itindex.net/hmhk1423492392082.html;
+http://blog.csdn.net/new_sara/article/details/51604997#(java版本总结)
+http://www.sxrczx.com/pages/itindex.net/hmhk1423492392082.html#(WebUploader 文件上传优化总结)
 http://blog.csdn.net/wxniitxueyuan/article/details/50476610?locationNum=2&fps=1;
-https://github.com/fex-team/webuploader/tree/master/jekyll;
+https://github.com/fex-team/webuploader/tree/master/jekyll#github
 http://fex.baidu.com/webuploader/doc/;
 http://blog.csdn.net/csdn_terence/article/details/53888741;
-http://www.cnblogs.com/wyb628/p/6813985.html(三种方法防止SpringMVC拦截器拦截js等静态资源文件)
+http://www.cnblogs.com/wyb628/p/6813985.html(三种方法防止SpringMVC拦截器拦截js等静态资源文件)注：此三种不对。
+http://blog.csdn.net/cq1982/article/details/44101761(新三种方法)试验可以、
+http://www.cnblogs.com/klguang/p/4743258.html#jsp中的路径
+http://www.cnblogs.com/hsapphire/archive/2010/03/17/1688559.html#js 路径

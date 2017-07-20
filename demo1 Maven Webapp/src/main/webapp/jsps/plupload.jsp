@@ -6,6 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<title>上传附件</title>
   <head>
     <base href="<%=basePath%>">
   <script type="text/javascript" src="/res/js/jquery-1.11.0.min.js"></script>
@@ -28,17 +29,18 @@ $(function(){
     var  uploader ;// 实例化   
     uploader = WebUploader.create({ 
            auto:false, //是否自动上传
+           runtimeOrder:'html5',
             pick: {
                 id: '#attach',
                 name:"demofile",  //这个地方 name 没什么用，虽然打开调试器，input的名字确实改过来了。但是提交到后台取不到文件。如果想自定义file的name属性，还是要和fileVal 配合使用。
                 label: '点击选择图片',
                 multiple:false            //默认为true，true表示可以多选文件，HTML5的属性
             },
-            swf: '/res/css/Uploader.swf',  //在这里必需要引入swf文件，webuploader初始化要用
+            //swf: '/res/js/Uploader.swf',  //在这里必需要引入swf文件，webuploader初始化要用
             //fileVal:'multiFile',  //自定义file的name属性，我用的版本是0.1.5 ,打开客户端调试器发现生成的input 的name 没改过来。
                                              //名字还是默认的file,但不是没用哦。虽然客户端名字没改变，但是提交到到后台，是要用multiFile 这个对象来取文件的，用file 是取不到文件的
                                              // 建议作者有时间把这个地方改改啊，搞死人了。。
-            server: "fileupload.json",
+            server: "/fileupload.json",
             duplicate:true,//是否可重复选择同一文件
             resize: false,
             formData: {

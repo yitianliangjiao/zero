@@ -23,15 +23,15 @@
     <!-- 配合下面实现对静态资源路由的拦截 -->
    <mvc:annotation-driven>
 	</mvc:annotation-driven>
-	 <mvc:default-servlet-handler/>
+	 <!-- <mvc:default-servlet-handler/> -->
 	<!-- 静态资源处理， css， js， imgs -->
-	<!-- <mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:resources mapping="/res/**" location="/res/" />
 	<mvc:resources mapping="/reszgt/**" location="/reszgt/" />
 		<mvc:resources mapping="/zgt/**" location="/zgt/" />
 		<mvc:resources mapping="/resweb/**" location="/resweb/" />
 	<mvc:resources mapping="/upload/**" location="/upload/" />
-	<mvc:resources mapping="/html/**" location="/WEB-INF/html/" /> -->
+	<mvc:resources mapping="/html/**" location="/WEB-INF/html/" /> 
 
 	<!--为了能够返回json数据-->
 	  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> 
