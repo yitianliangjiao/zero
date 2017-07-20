@@ -3,4 +3,5 @@ http://www.sxrczx.com/pages/itindex.net/hmhk1423492392082.html;
 http://blog.csdn.net/wxniitxueyuan/article/details/50476610?locationNum=2&fps=1;
 https://github.com/fex-team/webuploader/tree/master/jekyll;
 http://fex.baidu.com/webuploader/doc/;
-http://blog.csdn.net/csdn_terence/article/details/53888741
+http://blog.csdn.net/csdn_terence/article/details/53888741;
+http://www.cnblogs.com/wyb628/p/6813985.html(三种方法防止SpringMVC拦截器拦截js等静态资源文件)
