@@ -50,7 +50,15 @@ public JSONObject upload(HttpServletRequest request) throws IOException {
 	MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 	MultipartFile file = multiRequest.getFile("file");
 	InputStream in = file.getInputStream();
-	FileUtils.copyInputStreamToFile(in, new File("E://", "lal.jpg"));
+	String path = request.getSession().getServletContext().getRealPath("/");
+	path += File.separator+"upload"+File.separator+"img"+File.separator+"test.jpg";
+	System.out.println(path);
+	try {
+		FileUtils.copyInputStreamToFile(in, new File(path));
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	obj.put("0", "上传成功");
     return obj;
 }
