@@ -13,6 +13,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.wrh.model.*;
+import com.wrh.utill.FileUtilController;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
@@ -43,7 +46,7 @@ public String test() {
 }
 @ResponseBody
 @RequestMapping("/fileupload.json")
-public JSONObject upload(HttpServletRequest request) throws IOException {
+public JSONObject upload(HttpServletRequest request,upload upload) throws IOException {
 	JSONObject obj = new JSONObject();
 	CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 			request.getSession().getServletContext());
@@ -51,15 +54,17 @@ public JSONObject upload(HttpServletRequest request) throws IOException {
 	MultipartFile file = multiRequest.getFile("file");
 	InputStream in = file.getInputStream();
 	String path = request.getSession().getServletContext().getRealPath("/");
-	path += File.separator+"upload"+File.separator+"img"+File.separator+"test.jpg";
+	path += File.separator+"upload"+File.separator+"img"+File.separator+upload.getName();
 	System.out.println(path);
-	try {
-		FileUtils.copyInputStreamToFile(in, new File(path));
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	if(FileUtilController.FileUpload(upload, path, in))
+	{
+		obj.put("0", "上传成功");
 	}
-	obj.put("0", "上传成功");
+	else {
+		obj.put("3", "上传失败");
+	}
     return obj;
 }
+
+
 }
