@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +21,13 @@ private static final int BUF_SIZE = 2 * 1024;
 public static Boolean FileUpload(upload model,String path,InputStream in){
 	Boolean result = true;
 	try {
+		//获取文件后缀名
+		String filename = model.getName();
+		String[] split = filename.split(".");
+		String extendfile  = split[split.length-1].toLowerCase();
+		//设定以guid得文件名称
+		String guid = UUID.randomUUID().toString();
+		path += guid+"."+extendfile;
 		//分片上传
 		if(model.getChunk()!=null)
 		{

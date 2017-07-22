@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 
 import com.wrh.model.*;
 import com.wrh.utill.FileUtilController;
@@ -53,8 +54,9 @@ public JSONObject upload(HttpServletRequest request,upload upload) throws IOExce
 	MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 	MultipartFile file = multiRequest.getFile("file");
 	InputStream in = file.getInputStream();
+	Calendar date = Calendar.getInstance();
 	String path = request.getSession().getServletContext().getRealPath("/");
-	path += File.separator+"upload"+File.separator+"img"+File.separator+upload.getName();
+	path += File.separator+"upload"+File.separator+"img"+File.separator;
 	System.out.println(path);
 	if(FileUtilController.FileUpload(upload, path, in))
 	{
