@@ -4881,7 +4881,6 @@
     
                 input.attr( 'type', 'file' );
                 input.attr( 'name', opts.name );
-                input.attr( 'id', 'cstest' );
                 input.addClass('webuploader-element-invisible');
     
                 label.on( 'click', function() {
