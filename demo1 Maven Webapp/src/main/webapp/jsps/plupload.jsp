@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
   <script type="text/javascript" src="/res/js/jquery-1.11.0.min.js"></script>
  <script type="text/javascript" src="/res/js/webuploader.js"></script>
+ <script type="text/javascript" src="/res/js/spark-md5.js"></script>
  <link href="/res/css/webuploader.css" rel="stylesheet" type="text/css" />
  
   </head>
@@ -27,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(function(){
     var $list = $("#thelist");
     var  uploader ;// 实例化   
+    var GUID = WebUploader.Base.guid();
     uploader = WebUploader.create({ 
            auto:false, //是否自动上传
            runtimeOrder:'html5',
@@ -46,7 +48,7 @@ $(function(){
             formData: {
                 "status":"file",
                 "contentsDto.contentsId":"0000004730",
-                "uploadNum":"0000004730",
+                "guid":GUID,
                 "existFlg":'false'
             },  
             compress: null,//图片不压缩
@@ -66,7 +68,43 @@ $(function(){
                "<h4 class='info'>" + file.name + "</h4>" +
                "<p class='state'>等待上传...</p>" +
            "</div>" );
-       });
+                
+                
+      var file = file.getSource(),
+        blobSlice = file.mozSlice || file.webkitSlice || file.slice,
+        //file = this.files[0],
+        chunkSize = 2097152,                             // Read in chunks of 2MB
+        chunks = Math.ceil(file.size / chunkSize),
+        currentChunk = 0,
+        spark = new SparkMD5.ArrayBuffer(),
+        fileReader = new FileReader();
+
+    fileReader.onload = function (e) {
+        console.log('read chunk nr', currentChunk + 1, 'of', chunks);
+        spark.append(e.target.result);                   // Append array buffer
+        currentChunk++;
+
+        if (currentChunk < chunks) {
+            loadNext();
+        } else {
+            console.log('finished loading');
+            console.info('computed hash', spark.end());  // Compute hash
+        }
+    };
+
+    fileReader.onerror = function () {
+        console.warn('oops, something went wrong.');
+    };
+
+    function loadNext() {
+        var start = currentChunk * chunkSize,
+            end = ((start + chunkSize) >= file.size) ? file.size : start + chunkSize;
+
+        fileReader.readAsArrayBuffer(blobSlice.call(file, start, end).source);
+    }
+
+    loadNext();
+});
 
        //当所有文件上传结束时触发
        uploader.on("uploadFinished",function(){
@@ -95,6 +133,8 @@ $(function(){
        //当文件上传成功时触发。
          uploader.on( "uploadSuccess", function( file ) {
            $( "#"+file.id ).find("p.state").text("已上传");
+           
+        
        });
 
        uploader.on( "uploadError", function( file ) {
@@ -106,8 +146,11 @@ $(function(){
 
 
        $("#upload").on("click", function() {
+        
            uploader.upload();
        })
+
+
 
 });
 </script>

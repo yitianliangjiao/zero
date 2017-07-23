@@ -45,20 +45,16 @@ public String test() {
 
     return "jsps/plupload";
 }
+@RequestMapping("/test")
+public String test1() {
+
+    return "jsps/test";
+}
 @ResponseBody
 @RequestMapping("/fileupload.json")
 public JSONObject upload(HttpServletRequest request,upload upload) throws IOException {
 	JSONObject obj = new JSONObject();
-	CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
-			request.getSession().getServletContext());
-	MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-	MultipartFile file = multiRequest.getFile("file");
-	InputStream in = file.getInputStream();
-	Calendar date = Calendar.getInstance();
-	String path = request.getSession().getServletContext().getRealPath("/");
-	path += File.separator+"upload"+File.separator+"img"+File.separator;
-	System.out.println(path);
-	if(FileUtilController.FileUpload(upload, path, in))
+	if(FileUtilController.FileUpload(upload,request))
 	{
 		obj.put("0", "上传成功");
 	}

@@ -2,6 +2,7 @@ package com.wrh.model;
 
 import java.io.File;
 
+
 public class upload {
 
 private String chunks;
@@ -12,6 +13,7 @@ private String size;
 
 private String name;
 
+private String guid;
 
 public String getSize() {
 	return size;
@@ -43,5 +45,13 @@ public String getChunk() {
 
 public void setChunk(String chunk) {
 	this.chunk = chunk;
+}
+
+public String getGuid() {
+	return guid;
+}
+
+public void setGuid(String guid) {
+	this.guid = guid;
 }
 }

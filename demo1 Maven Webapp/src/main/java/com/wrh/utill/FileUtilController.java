@@ -6,33 +6,46 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.wrh.model.upload;
 
 public class FileUtilController {
 private static final int BUF_SIZE = 2 * 1024;  
 	 
-public static Boolean FileUpload(upload model,String path,InputStream in){
+public static Boolean FileUpload(upload model,HttpServletRequest request){
 	Boolean result = true;
 	try {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+		MultipartFile file = multiRequest.getFile("file");
+		InputStream in = file.getInputStream();
+		
+		Calendar date = Calendar.getInstance();
+		String path = request.getSession().getServletContext().getRealPath("/");
+		path += File.separator+"upload"+File.separator+date.get(Calendar.YEAR)+File.separator+(date.get(Calendar.MONTH)+1);
+		System.out.println(path);
 		//获取文件后缀名
 		String filename = model.getName();
-		String[] split = filename.split(".");
+		String[] split = filename.split("\\.");
 		String extendfile  = split[split.length-1].toLowerCase();
 		//设定以guid得文件名称
-		String guid = UUID.randomUUID().toString();
-		path += guid+"."+extendfile;
+		String guid = model.getGuid();
+		path += File.separator+guid+"."+extendfile;
 		//分片上传
 		if(model.getChunk()!=null)
 		{
 			int chunk =  Integer.valueOf(model.getChunk());
-			int chunks = Integer.valueOf(model.getChunks());
 			File targetFile = new File(path);  
 			Savefile(model, in, targetFile,  chunk == 0?false:true);
 		}//未分片
