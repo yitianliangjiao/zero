@@ -63,6 +63,11 @@ public JSONObject upload(HttpServletRequest request,upload upload) throws IOExce
 	}
     return obj;
 }
-
-
+@ResponseBody
+@RequestMapping("/PostMd5.json")
+public JSONObject Md5(HttpServletRequest request,String guid,String md5) throws IOException {
+	JSONObject obj = new JSONObject();
+	
+    return obj;
+}
 }

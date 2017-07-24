@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
   </head>
   <body>
+  <input type="hidden" name="md5" id="md5">
    <div id="uploader" class="wu-example">
     <!--用来存放文件信息-->
     <div id="thelist" class="uploader-list"></div>
@@ -42,7 +43,7 @@ $(function(){
             //fileVal:'multiFile',  //自定义file的name属性，我用的版本是0.1.5 ,打开客户端调试器发现生成的input 的name 没改过来。
                                              //名字还是默认的file,但不是没用哦。虽然客户端名字没改变，但是提交到到后台，是要用multiFile 这个对象来取文件的，用file 是取不到文件的
                                              // 建议作者有时间把这个地方改改啊，搞死人了。。
-            server: "/fileupload.json",
+            server: "/fileupload.json?md5="+$("#md5").val(),
             duplicate:true,//是否可重复选择同一文件
             resize: false,
             formData: {
@@ -89,6 +90,7 @@ $(function(){
         } else {
             console.log('finished loading');
             console.info('computed hash', spark.end());  // Compute hash
+            $("#md5").val(spark.end());
         }
     };
 
@@ -109,6 +111,15 @@ $(function(){
        //当所有文件上传结束时触发
        uploader.on("uploadFinished",function(){
            console.log("uploadFinished:");
+           var data = {guid:Guid,md5:$("#md5").val()};
+           $.post("PostMd5.json",data,function(data){
+           	if(data.result)
+           	{
+           	alert("上传成功！");
+           	}else{
+           	alert("上传文件不完整，请重新上传!")
+           	}
+           })
        })
 
         //当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。
