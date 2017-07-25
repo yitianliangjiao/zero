@@ -65,9 +65,10 @@ public JSONObject upload(HttpServletRequest request,upload upload) throws IOExce
 }
 @ResponseBody
 @RequestMapping("/PostMd5.json")
-public JSONObject Md5(HttpServletRequest request,String guid,String md5) throws IOException {
+public JSONObject Md5(HttpServletRequest request,upload upload) throws IOException {
 	JSONObject obj = new JSONObject();
-	
+	FileUtilController.Mergefile(upload, request);
+	obj.put("result", true);
     return obj;
 }
 }
