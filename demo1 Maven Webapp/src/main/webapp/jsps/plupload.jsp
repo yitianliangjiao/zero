@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="button" value="上传" id="upload"/> 
     </div>
 </div>
-<script>
+<script type="text/javascript" charest="GBK">
 $(function(){
     var $list = $("#thelist");
     var  uploader ;// 实例化   
@@ -90,8 +90,12 @@ $(function(){
             loadNext();
         } else {
             console.log('finished loading');
-            console.info('computed hash', spark.end());  // Compute hash
-            $("#md5").val(spark.end());
+            console.log(spark.end());  // Compute hash
+             var hashvalue = spark.end().toString();
+             console.log(hashvalue);
+            $("#md5").val(hashvalue);
+           
+            console.log($("#md5").val());
         }
     };
 
@@ -111,7 +115,7 @@ $(function(){
 
        //当所有文件上传结束时触发
        uploader.on("uploadFinished",function(file){
-           console.log("uploadFinished:");
+           console.log("uploadFinished:"+$("#md5").val());
            var data = {guid:GUID,md5:$("#md5").val(),name:$("#filename").val()};
            $.post("PostMd5.json",data,function(data){
            	if(data.result)
