@@ -34,7 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             loadNext();
         } else {
             console.log('finished loading');
-            console.info('computed hash', spark.end());  // Compute hash
+            console.log(spark.end());
+            console.log(spark.end());  // Compute hash
+            console.log(spark.end());
         }
     };
 

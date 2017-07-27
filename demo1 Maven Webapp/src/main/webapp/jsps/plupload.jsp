@@ -89,9 +89,8 @@ $(function(){
         if (currentChunk < chunks) {
             loadNext();
         } else {
-            console.log('finished loading');
-            console.log(spark.end());  // Compute hash
-             var hashvalue = spark.end().toString();
+            console.log('finished loading'); // Compute hash
+             var hashvalue = spark.end();
              console.log(hashvalue);
             $("#md5").val(hashvalue);
            
