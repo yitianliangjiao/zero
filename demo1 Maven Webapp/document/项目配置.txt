@@ -8,3 +8,6 @@ http://www.cnblogs.com/wyb628/p/6813985.html(三种方法防止SpringMVC拦截�
 http://blog.csdn.net/cq1982/article/details/44101761(新三种方法)试验可以、
 http://www.cnblogs.com/klguang/p/4743258.html#jsp中的路径
 http://www.cnblogs.com/hsapphire/archive/2010/03/17/1688559.html#js 路径
+搭建ssm框架
+http://blog.csdn.net/gebitan505/article/details/44455235/
+http://www.cnblogs.com/molao-doing/p/6056380.html#(数据库连接超时因为mybatis-spring包版本的问题)

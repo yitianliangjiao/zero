@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <context-param id="ParamValue_1498726053934">
+  <!--<context-param id="ParamValue_1498726053934">
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>-->
         <!-- 默认是/WEB-INF/applicationContext.xml -->
-     </context-param>
-     
+    <!--  </context-param>  -->
+     <context-param>  
+        <param-name>contextConfigLocation</param-name>  
+        <param-value>/WEB-INF/SpringMybatis.xml</param-value>  
+    </context-param>  
      <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
