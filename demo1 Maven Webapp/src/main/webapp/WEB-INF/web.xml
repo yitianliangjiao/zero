@@ -5,9 +5,9 @@
         <param-value>/WEB-INF/applicationContext.xml</param-value>-->
         <!-- 默认是/WEB-INF/applicationContext.xml -->
     <!--  </context-param>  -->
-     <context-param>  
+     <context-param id="ParamValue_1501557033059">  
         <param-name>contextConfigLocation</param-name>  
-        <param-value>/WEB-INF/SpringMybatis.xml</param-value>  
+        <param-value>classpath:SpringMybatis.xml</param-value>  
     </context-param>  
      <listener>
         <listener-class>
@@ -21,7 +21,7 @@
     <url-pattern>*.swf</url-pattern>    
      <url-pattern>/images/*</url-pattern>    
 </servlet-mapping>  -->
-  <filter>
+  <filter id="Filter_1501557032829">
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
@@ -47,7 +47,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/SpringMVC-servlet.xml</param-value>
+            <param-value>classpath:SpringMVC-servlet.xml</param-value>
             <!-- 默认是/WEB-INF/[servlet名字]-servlet.xml -->
         </init-param>
         <load-on-startup>1</load-on-startup>
