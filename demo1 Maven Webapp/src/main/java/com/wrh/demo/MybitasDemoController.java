@@ -18,7 +18,7 @@ private t_userServiceImpl userService;
 @RequestMapping("/mybitas")  
 public String toIndex(ModelMap map){  
     int userId = 1;  
-    t_user user = userService.selectByPrimaryKey(Integer.valueOf(userId)); 
+    t_user user = userService.getModel(userId); 
     map.addAttribute("name", user.getName());  
     return "jsps/list"; 
 }
