@@ -39,9 +39,22 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />  
         <!-- 自动扫描mapping.xml文件 -->  
-        <property name="mapperLocations" value="/mapper/*.xml"></property>  
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>  
     </bean>  
-  
+    
+    <!-- 测试通用mapper-->
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wrh.mapper"/>
+        <!-- 3.2.2版本新特性，markerInterface可以起到mappers配置的作用，详细情况需要看Marker接口类 -->
+        <property name="markerInterface" value="com.wrh.core.MyMapper"/>
+        <!-- 通用Mapper通过属性注入进行配置，默认不配置时会注册Mapper<T>接口
+        <property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper
+            </value>
+        </property>
+        -->
+    </bean>
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
         <property name="basePackage" value="com.wrh.dao" />  

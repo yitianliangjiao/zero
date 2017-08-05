@@ -1,12 +1,20 @@
 package com.wrh.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 public class t_user {
+	@Id
+	@Column(name = "ID")
     private Integer id;
-
+	
+	@Column(name = "NAME")
     private String name;
-
+	
+	@Column(name = "ZHIWU")
     private String zhiwu;
-
+	
+	@Column(name = "AGE")
     private Integer age;
 
     public Integer getId() {
