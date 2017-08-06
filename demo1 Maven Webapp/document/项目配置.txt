@@ -12,3 +12,4 @@ http://www.cnblogs.com/hsapphire/archive/2010/03/17/1688559.html#js 路径
 http://blog.csdn.net/gebitan505/article/details/44455235/
 http://www.cnblogs.com/molao-doing/p/6056380.html#(数据库连接超时因为mybatis-spring包版本的问题)
 https://github.com/abel533/Mapper#通用mapper
+http://www.csdn.net/tag/知识图谱

@@ -1,7 +1,9 @@
 package com.wrh.mapper;
 
-import tk.mybatis.mapper.common.Mapper;
+import com.wrh.core.MyMapper;
+import com.wrh.model.t_user;
 
-public interface t_userMapper extends Mapper<t_userMapper>{
+
+public interface t_userMapper extends MyMapper<t_user>{
 
 }
