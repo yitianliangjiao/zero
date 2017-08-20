@@ -6,23 +6,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
+<title>测试</title>
+<head>
     <base href="<%=basePath%>">
-    
-    <title>My JSP 'list.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+  <script type="text/javascript" src="/res/js/jquery-1.11.0.min.js"></script> 
   </head>
   
   <body>
      ${name} 
+     <button type="button" onclick = "test();">测试</button>
   </body>
+  <script>
+  function test(){
+  var data = {
+    "id": "hello"
+};
+  var data1 = '{"id" : "test"}';
+   console.log("{\"id\" : \"test\"}");
+  console.log('{"id":"hello"}');
+  //console.log(JSON.parse(data));
+  $.post("/demo/test.json",data,function(data){
+ alert(data.id);
+  })
+  }
+  </script>
 </html>
